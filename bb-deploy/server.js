@@ -25,10 +25,7 @@ app.use(express.json());
 // }));
 
 app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://crm-project-39me.vercel.app" // 👈 EXACT URL
-  ],
+  origin: "https://crm-3xnxsz0q3-sooryajiths-projects-978018ba.vercel.app",
   credentials: true
 }));
 
