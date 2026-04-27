@@ -1,0 +1,278 @@
+/* =========================
+   WRAPPER
+========================= */
+
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* =========================
+   INPUT BOX
+========================= */
+
+.inputBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  height: 42px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: white;
+  font-size: 14px;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.inputBox:hover {
+  border-color: #9ca3af;
+}
+
+.inputError {
+  border-color: #ef4444 !important;
+}
+
+.disabled {
+  background: #f8fafc;
+  color: #94a3b8;
+  cursor: not-allowed;
+  border-color: #e2e8f0;
+}
+
+.value {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.placeholder {
+  color: #9ca3af;
+}
+
+.icon {
+  font-size: 18px;
+  color: #7c8b98;
+}
+
+/* =========================
+   CALENDAR DROPDOWN (Desktop)
+========================= */
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
+  width: auto;
+  z-index: 1000;
+  background: white;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  padding: 6px 4px 10px 4px;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  animation: dropdownFade 0.2s ease-out forwards;
+}
+
+.inner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Triangle Arrow */
+.dropdown::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 14px;
+  height: 14px;
+  background: white;
+  border-left: 1px solid #cbd5e1;
+  border-top: 1px solid #cbd5e1;
+  z-index: 0;
+}
+
+.dropdownTop {
+  top: auto;
+  bottom: calc(100% + 12px);
+}
+
+.dropdownTop::before {
+  top: auto;
+  bottom: -8px;
+  border-left: none;
+  border-top: none;
+  border-right: 1px solid #cbd5e1;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+@media (max-width: 1200px) {
+  .dropdown::before,
+  .dropdownTop::before,
+  .arrowTop,
+  .arrowBottom {
+    display: none !important;
+  }
+}
+
+.mobileOverlay {
+  display: none;
+}
+
+/* =========================
+   MOBILE POSITIONING
+========================= */
+
+.mobileOverlay {
+  display: block;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  z-index: 10000;
+}
+
+.desktopOverlay {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 9999;
+}
+
+/* =========================
+   COMPACT / TABLE CELL MODE
+========================= */
+
+.compactDropdown {
+  min-width: 210px !important;
+  padding: 6px 4px 10px 4px !important;
+}
+
+/* =========================
+   REACT DATEPICKER OVERRIDES (CLONED FROM DATEFILTER)
+========================= */
+
+:global(.react-datepicker) {
+  border: none;
+  background: white;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+:global(.react-datepicker__header) {
+  background: white;
+  border-bottom: 1px solid #f1f5f9;
+  padding-top: 10px;
+}
+
+:global(.react-datepicker__current-month) {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+:global(.react-datepicker__month) {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+:global(.react-datepicker__week),
+:global(.react-datepicker__day-names) {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.dropdown :global(.react-datepicker__day-name) {
+  color: #94a3b8;
+  width: 26px;
+  height: 26px;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 11px;
+  margin: 1px !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+}
+
+.dropdown :global(.react-datepicker__day) {
+  width: 26px;
+  height: 26px;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 5px !important;
+  color: #334155;
+  font-size: 11px;
+  margin: 1px !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  box-sizing: border-box !important;
+  transition: all 0.1s;
+}
+
+:global(.react-datepicker__day:hover) {
+  background: #f1f5f9;
+}
+
+:global(.react-datepicker__day--selected),
+:global(.react-datepicker__day--keyboard-selected) {
+  background: #5b4bdb !important;
+  color: white !important;
+  font-weight: 600;
+}
+
+:global(.react-datepicker__day--today) {
+  color: #5b4bdb;
+  font-weight: 700;
+}
+
+:global(.react-datepicker__triangle) {
+  display: none;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes dropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes dropdownFadeMobile {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

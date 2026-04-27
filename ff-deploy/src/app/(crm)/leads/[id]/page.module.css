@@ -1,0 +1,244 @@
+/* ================= WRAPPER ================= */
+
+.wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+/* ================= TOP BAR ================= */
+
+.topBar {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: none;
+
+    padding: 10px 16px;
+
+    border-bottom: none;
+    background: white;
+
+}
+
+.title {
+    font-weight: 600;
+    display: none;
+}
+
+
+/* hide drawer buttons on desktop */
+
+.iconBtn {
+    display: none;
+
+    border: none;
+    background: #f3f4f6;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 8px;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+
+/* ================= GRID ================= */
+
+.container {
+
+    display: grid;
+
+    grid-template-columns:
+        328px minmax(0, 1fr) 320px;
+
+    gap: 0;
+
+    padding: 20px;
+
+    background: #f6f7fb;
+
+    height: calc(100vh - 80px);
+    min-height: 0;
+    overflow: hidden;
+    background: #f6f7fb;
+}
+
+/* prevent panel overflow */
+
+.container>* {
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width:1200px) {
+
+    .topBar {
+        display: flex;
+        position: sticky;
+        top: 0;
+        z-index: 200;
+    }
+
+    .title {
+        display: block;
+        flex: 1;
+        text-align: center;
+        font-size: 15px;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow: visible;
+        padding: 12px;
+    }
+
+    .rightDesktop, .leftDesktop {
+        display: none;
+    }
+
+    .rightBtn, .leftBtn {
+        display: flex;
+    }
+
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width:768px) {
+
+    .topBar {
+        display: flex;
+    }
+
+    .title {
+        display: block;
+        flex: 1;
+        text-align: center;
+    }
+
+    .container {
+        grid-template-columns: 1fr;
+        padding: 12px;
+    }
+
+    .leftDesktop,
+    .rightDesktop {
+        display: none;
+    }
+
+    .leftBtn,
+    .rightBtn {
+        display: flex;
+    }
+
+}
+
+/* ================= OVERLAY ================= */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    backdrop-filter: blur(4px);
+}
+
+
+/* ================= LEFT DRAWER ================= */
+
+.leftDrawer {
+    position: relative;
+    width: 90%;
+    max-width: 420px;
+    height: 85vh;
+    max-height: 750px;
+    background: #ffffff !important;
+    border-radius: 24px;
+    box-shadow: none !important;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: none !important;
+    outline: none !important;
+    animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+
+/* ================= RIGHT DRAWER ================= */
+
+.rightDrawer {
+    position: relative;
+    width: 90%;
+    max-width: 420px;
+    height: 85vh;
+    max-height: 750px;
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: none !important;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: none !important;
+    outline: none !important;
+    animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+
+/* ================= CLOSE BUTTON ================= */
+
+.close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    border: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 100;
+    color: #2D3E50;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.close:hover {
+    color: #FF0000 !important;
+    transform: scale(1.2);
+}
+
+
+/* ================= ANIMATIONS ================= */
+
+@keyframes modalPop {
+    from {
+        opacity: 0;
+        transform: scale(0.85) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
