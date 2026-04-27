@@ -5,7 +5,7 @@ import { API_BASE_URL } from "@/config/apiConfig";
 
 export default function useApiEntity(entity) {
 
-const API = `https://crm-kq7h.onrender.com/api/${entity}`;
+const API = `${API_BASE_URL}/${entity}`;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 

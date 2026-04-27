@@ -31,7 +31,7 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      const res = await fetch(`${API_BASE_URL}/api/users/login`, {
+      const res = await fetch(`${API_BASE_URL}/users/login`,  {
         method: "POST",
         credentials: "include",
         headers: {
