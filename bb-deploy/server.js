@@ -24,10 +24,8 @@ app.use(express.json());
 //   credentials: true
 // }));
 
-
-
 app.use(cors({
-  origin: "https://crm-fm15gpfpd-sooryajiths-projects-978018ba.vercel.app", // ⚠️ exact frontend URL
+  origin: true,
   credentials: true
 }));
 
