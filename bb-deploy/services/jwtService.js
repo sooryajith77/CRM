@@ -12,17 +12,20 @@ async function comparePassword(password, hash) {
 
 // JWT
 function generateToken(user) {
+  if (!process.env.JWT_SECRET) {
+    throw new Error("JWT_SECRET is missing in environment variables");
+  }
+
   return jwt.sign(
     {
       id: user.id,
       email: user.email,
-      first_name: user.first_name,
-      last_name: user.last_name,
-      role: user.role, // 🔥 IMPORTANT
+      role: user.role,
     },
     process.env.JWT_SECRET,
     { expiresIn: "1d" }
   );
+
 }
 
 function verifyToken(token) {
