@@ -75,9 +75,9 @@ async function loginUser(req, res) {
   secure: true,       // 🔥 REQUIRED for HTTPS
   sameSite: "None",   // 🔥 REQUIRED for cross-origin
 });
+console.log("USER DEBUG:", user);
 
-    // 🔥 NOTIFICATION
- try {
+try {
   await notifRepo.createNotification({
     user_id: user.id,
     type: "info",
