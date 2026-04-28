@@ -25,13 +25,20 @@ app.use(express.json());
 // }));
 
 app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://crm-3xnxsz0q3-sooryajiths-projects-978018ba.vercel.app"
-  ],
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+
+    if (
+      origin.includes("vercel.app") ||
+      origin.includes("localhost")
+    ) {
+      return callback(null, true);
+    }
+
+    return callback(new Error("Not allowed by CORS"));
+  },
   credentials: true
 }));
-
 app.use(cookieParser());
 
 // ==========================
