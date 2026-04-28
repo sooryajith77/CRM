@@ -32,9 +32,19 @@ async function getUserByEmail(email) {
   if (!user) return null;
 
   const userData = user.toJSON();
-  userData.role = userData.Role ? userData.Role.name : null;
-  delete userData.Role;
-  return userData;
+
+  return {
+    id: userData.id,                // ✅ FORCE include id
+    first_name: userData.first_name,
+    last_name: userData.last_name,
+    email: userData.email,
+    phone: userData.phone,
+    company_name: userData.company_name,
+    industry_type: userData.industry_type,
+    country: userData.country,
+    password: userData.password,
+    role: userData.Role ? userData.Role.name : null,
+  };
 }
 
 // GET USER BY ID
