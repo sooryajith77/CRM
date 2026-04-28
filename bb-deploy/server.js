@@ -24,7 +24,7 @@ app.use(express.json());
 //   credentials: true
 // }));
 
-const cors = require("cors");
+
 
 app.use(cors({
   origin: "https://crm-fm15gpfpd-sooryajiths-projects-978018ba.vercel.app", // ⚠️ exact frontend URL
