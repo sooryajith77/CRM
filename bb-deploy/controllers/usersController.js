@@ -29,14 +29,15 @@ async function registerUser(req, res) {
     });
 
     // 🔥 NOTIFICATION
-    await notifRepo.createNotification({
-      user_id: user.id,
-      type: "success",
-      message: `Welcome to the CRM, ${user.first_name}! Your account has been created successfully.`,
-      metadata: { 
-        actor_name: `${user.first_name || ""} ${user.last_name || ""}`.trim()
-      }
-    });
+     await notifRepo.createNotification({
+    user_id: user.id,
+    type: "info",
+    message: `Login successful. Welcome back, ${user.first_name}!`,
+    metadata: { 
+      actor_name: `${user.first_name || ""} ${user.last_name || ""}`.trim()
+    }
+  });
+
 
     res.json(user);
 
