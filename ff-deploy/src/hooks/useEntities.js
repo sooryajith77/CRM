@@ -21,7 +21,7 @@ const fetchData = async () => {
 
     const result = await res.json();
 
-    console.log("🔥 API RESPONSE:", result); // 👈 ADD THIS
+   console.log("🔥 API RESPONSE:", result);
 
     setData(Array.isArray(result) ? result : []);
   } catch (err) {

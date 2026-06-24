@@ -17,7 +17,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     const checkUser = async () => {
-      const res = await fetch(`${API_BASE_URL}/api/users/profile`, {
+      const res = await fetch(`${API_BASE_URL}/users/profile`, {
         credentials: "include",
       });
 

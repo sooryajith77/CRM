@@ -2,7 +2,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { API_BASE_URL } from "@/config/apiConfig";
 
-const API = `${API_BASE_URL}/api/notifications`;
+const API = `${API_BASE_URL}/notifications`;
 
 export default function useNotificationApi() {
   const [notifications, setNotifications] = useState([]);
