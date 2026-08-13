@@ -32,7 +32,7 @@ export default function Drawer({
 
   useEffect(() => {
     if (user?.role === "admin") {
-      fetch(`${API_BASE_URL}/api/users`, {
+      fetch(`${API_BASE_URL}/users`, {
         credentials: "include",
       })
         .then((res) => res.json())
@@ -61,7 +61,7 @@ useEffect(() => {
   const fetchData = async () => {
     try {
       // Leads
-      const leadsRes = await fetch(`${API_BASE_URL}/api/leads`, {
+      const leadsRes = await fetch(`${API_BASE_URL}/leads`, {
         credentials: "include",
       });
 
@@ -81,7 +81,7 @@ useEffect(() => {
       );
 
       // Companies
-      const companiesRes = await fetch(`${API_BASE_URL}/api/companies`, {
+      const companiesRes = await fetch(`${API_BASE_URL}/companies`, {
         credentials: "include",
       });
 
@@ -108,7 +108,7 @@ useEffect(() => {
       ]);
 
       // Deals
-      const dealsRes = await fetch(`${API_BASE_URL}/api/deals`, {
+      const dealsRes = await fetch(`${API_BASE_URL}/deals`, {
         credentials: "include",
       });
 
@@ -139,7 +139,7 @@ useEffect(() => {
 }, [entityType, isOpen]);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/leads`, {
+    fetch(`${API_BASE_URL}/leads`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -157,7 +157,7 @@ useEffect(() => {
         setAllLeadsRaw([]);
       });
 
-    fetch(`${API_BASE_URL}/api/companies`, {
+    fetch(`${API_BASE_URL}/companies`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -174,7 +174,7 @@ useEffect(() => {
       })
       .catch(() => setCompanyOptions([]));
 
-    fetch(`${API_BASE_URL}/api/deals`, {
+    fetch(`${API_BASE_URL}/deals`, {
       credentials: "include",
     })
       .then((res) => res.json())

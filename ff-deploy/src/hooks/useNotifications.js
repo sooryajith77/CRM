@@ -27,7 +27,7 @@ export default function useNotificationApi() {
 
   const markAsRead = async (id) => {
     try {
-      const res = await fetch(`${API}/${id}/read`, {
+      const res = await fetch(`${API_BASE_URL}/${id}/read`, {
         method: "PUT",
         credentials: "include",
       });

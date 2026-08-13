@@ -78,7 +78,7 @@ export default function ActivityItem({ activity, entityType }) {
 
     try {
       console.log(`🌐 TOGGLING TASK ID: ${activity.id} TO: ${newValue}`); // 🔥 DEBUG LOG
-      const res = await fetch(`${API_BASE_URL}/api/tasks/${activity.id}`, {
+      const res = await fetch(`${API_BASE_URL}/tasks/${activity.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         credentials: "include", // 🔥 REQUIRED FOR AUTH

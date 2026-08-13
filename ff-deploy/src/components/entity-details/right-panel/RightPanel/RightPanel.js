@@ -51,7 +51,7 @@ export default function RightPanel({ entityId, entityType, refreshKey }) {
   const fetchAttachments = () => {
     if (!entityType || !entityId) return;
     fetch(
-      `${API_BASE_URL}/api/attachments?related_type=${entityType}&related_id=${entityId}`,
+      `${API_BASE_URL}/attachments?related_type=${entityType}&related_id=${entityId}`,
       { credentials: "include" }
     )
       .then((res) => res.json())
@@ -75,7 +75,7 @@ export default function RightPanel({ entityId, entityType, refreshKey }) {
     formData.append("related_id", entityId || 0);   // ✅ proper entity link
 
     try {
-      const res = await fetch(`${API_BASE_URL}/api/upload`, {
+      const res = await fetch(`${API_BASE_URL}/upload`, {
         method: "POST",
         body: formData,
         credentials: "include",
