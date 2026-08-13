@@ -4,4 +4,4 @@
 
 
 export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://crm-1-ewkl.onrender.com/api";
+  process.env.NEXT_PUBLIC_API_URL || "https://crm-3-1swz.onrender.com/api";
