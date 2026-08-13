@@ -25,7 +25,10 @@ app.use(express.json());
 // }));
 
 app.use(cors({
-  origin: true,
+  origin: [
+    "http://localhost:3000",
+    "https://crm-xi-teal-76.vercel.app"
+  ],
   credentials: true
 }));
 
