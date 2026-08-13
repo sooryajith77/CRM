@@ -57,7 +57,7 @@ export default function ProgressBar() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${API_BASE_URL}/api/deal-progress`, {
+    fetch(`${API_BASE_URL}/deal-progress`, {
       credentials: "include", // 🔥 IMPORTANT
     })
       .then(async (res) => {

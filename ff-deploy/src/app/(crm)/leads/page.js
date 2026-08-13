@@ -51,7 +51,7 @@
 
 
 //   useEffect(() => {
-//     fetch(`${API_BASE_URL}/api/users/profile`, {
+//     fetch(`${API_BASE_URL}/users/profile`, {
 //       credentials: "include",
 //     })
 //       .then(res => res.json())
@@ -490,7 +490,7 @@ export default function LeadsPage() {
 
   // ✅ FETCH USER
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/users/profile`, {
+    fetch(`${API_BASE_URL}/users/profile`, {
       credentials: "include",
     })
       .then(res => res.json())

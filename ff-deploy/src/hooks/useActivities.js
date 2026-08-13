@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { API_BASE_URL } from "@/config/apiConfig";
 
 export default function useActivities(entityId, entityType) {
-  const BASE_URL = `${API_BASE_URL}/api`;
+  const BASE_URL = `${API_BASE_URL}`;
   const [data, setData] = useState([]);
 
   const safeJson = async (res) => {

@@ -54,7 +54,7 @@ export default function StatusBar() {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/statusbar`,{
+    fetch(`${API_BASE_URL}/statusbar`,{
        credentials: "include", // 🔥 IMPORTANT
     })
     

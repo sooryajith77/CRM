@@ -73,7 +73,7 @@ export default function ProfileModal({ isOpen, onClose, user, onUpdate }) {
       // If password is empty, don't send it to backend to avoid empty update
       if (!payload.password) delete payload.password;
 
-      const res = await fetch(`${API_BASE_URL}/api/users/profile`, {
+      const res = await fetch(`${API_BASE_URL}/users/profile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

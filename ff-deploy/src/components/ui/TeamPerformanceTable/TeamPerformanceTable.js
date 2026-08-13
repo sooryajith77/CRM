@@ -19,7 +19,7 @@ export default function TeamPerformanceTable() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${API_BASE_URL}/api/team-performance`, {
+    fetch(`${API_BASE_URL}/team-performance`, {
       credentials: "include", // 🔥 IMPORTANT
     })
       .then(async (res) => {

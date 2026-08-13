@@ -53,7 +53,7 @@ export default function TicketsPage() {
 
   useEffect(() => {
     // 1. Fetch CURRENT user profile
-    fetch(`${API_BASE_URL}/api/users/profile`, {
+    fetch(`${API_BASE_URL}/users/profile`, {
       credentials: "include",
     })
       .then(res => res.json())
@@ -67,7 +67,7 @@ export default function TicketsPage() {
       .catch(err => console.error(err));
 
     // 2. Fetch ALL users for filter dropdown
-    fetch(`${API_BASE_URL}/api/users`, {
+    fetch(`${API_BASE_URL}/users`, {
       credentials: "include",
     })
       .then(res => res.json())

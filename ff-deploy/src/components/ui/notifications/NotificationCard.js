@@ -105,7 +105,7 @@ export default function NotificationCard({ notification, onRead, onDelete, onClo
     if (newExpanded && !hydratedData && !metadata.body && !metadata.content) {
       try {
         setLoading(true);
-        const response = await fetch(`${API_BASE_URL}/api/hydrate/${entity_type}/${entity_id}`, {
+        const response = await fetch(`${API_BASE_URL}/hydrate/${entity_type}/${entity_id}`, {
           credentials: 'include'
         });
         if (response.ok) {

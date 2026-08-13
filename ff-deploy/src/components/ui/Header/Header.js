@@ -104,7 +104,7 @@ export default function Header({ toggleSidebar }) {
     const delayDebounceFn = setTimeout(async () => {
       setIsSearching(true);
       try {
-        const res = await fetch(`${API_BASE_URL}/api/search?q=${encodeURIComponent(searchTerm)}`, {
+        const res = await fetch(`${API_BASE_URL}/search?q=${encodeURIComponent(searchTerm)}`, {
           credentials: "include",
         });
         const data = await res.json();
@@ -240,7 +240,7 @@ export default function Header({ toggleSidebar }) {
   };
 
   const handleLogout = async () => {
-    await fetch(`${API_BASE_URL}/api/users/logout`, { method: "POST", credentials: "include" });
+    await fetch(`${API_BASE_URL}/users/logout`, { method: "POST", credentials: "include" });
     window.location.href = "/login";
   };
 

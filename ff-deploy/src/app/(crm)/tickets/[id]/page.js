@@ -61,7 +61,7 @@ export default function TicketsDetailsPage() {
 const [leads, setLeads] = useState([]);
 
 useEffect(() => {
-  fetch(`${API_BASE_URL}/api/leads`)
+  fetch(`${API_BASE_URL}/leads`)
     .then(res => res.json())
     .then(data => {
       if (Array.isArray(data)) {
@@ -106,7 +106,7 @@ const leadOptions = Array.isArray(leads)
   const [user, setUser] = useState(null);
 
 useEffect(() => {
-  fetch(`${API_BASE_URL}/api/users/profile`, {
+  fetch(`${API_BASE_URL}/users/profile`, {
     credentials: "include",
   })
     .then(res => res.json())
@@ -129,7 +129,7 @@ useEffect(() => {
     
     // ⏹️ TERMINATE REAL CALL IF MANUAL HANGUP (User clicked End Call)
     if (!forceOutcome && callSid) {
-      fetch(`${API_BASE_URL}/api/calls/terminate/${callSid}`, { 
+      fetch(`${API_BASE_URL}/calls/terminate/${callSid}`, { 
         method: 'POST',
         credentials: "include"
       })
@@ -169,7 +169,7 @@ useEffect(() => {
     if (isCalling && callSid) {
       pollInterval = setInterval(async () => {
         try {
-          const res = await fetch(`${API_BASE_URL}/api/calls/status/${callSid}`, {
+          const res = await fetch(`${API_BASE_URL}/calls/status/${callSid}`, {
             credentials: "include"
           });
           const data = await res.json();
@@ -232,7 +232,7 @@ useEffect(() => {
     } else {
       // Fallback: Fetch single entity
       console.log(`[TICKET FALLBACK] Fetching ID: ${id}`);
-      fetch(`${API_BASE_URL}/api/tickets/${id}`, {
+      fetch(`${API_BASE_URL}/tickets/${id}`, {
         credentials: "include"
       })
         .then(async (res) => {
@@ -295,7 +295,7 @@ useEffect(() => {
       
       // 🔥 TRIGGER REAL TWILIO CALL
       try {
-        const res = await fetch(`${API_BASE_URL}/api/calls/initiate`, {
+        const res = await fetch(`${API_BASE_URL}/calls/initiate`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           credentials: "include",
@@ -348,7 +348,7 @@ useEffect(() => {
   ========================= */
   const handleConvert = async () => {
     try {
-      const res = await fetch(`${API_BASE_URL}/api/leads/${entityState.id}/convert`, {
+      const res = await fetch(`${API_BASE_URL}/leads/${entityState.id}/convert`, {
   method: "POST",
   credentials: "include",
 });

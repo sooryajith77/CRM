@@ -28,7 +28,7 @@ export default function SalesReport() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${API_BASE_URL}/api/sales-report`,{
+    fetch(`${API_BASE_URL}/sales-report`,{
        credentials: "include", // 🔥 IMPORTANT
     })
       .then((res) => res.json())
