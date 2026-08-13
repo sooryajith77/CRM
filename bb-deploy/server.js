@@ -27,9 +27,11 @@ app.use(express.json());
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://crm-xi-teal-76.vercel.app"
+    "https://crm-xi-teal-76.vercel.app",
   ],
-  credentials: true
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
 
 app.use(cookieParser());
