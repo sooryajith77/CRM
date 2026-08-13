@@ -20,7 +20,7 @@ export default function SideBar({ open, close }) {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch(`${API_BASE_URL}/api/users/profile`, {
+        const res = await fetch(`${API_BASE_URL}/users/profile`, {
           credentials: "include",
         });
 

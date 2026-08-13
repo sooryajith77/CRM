@@ -57,41 +57,86 @@ export default function Drawer({
     }
   }, [entity]);
 
-  useEffect(() => {
-    if (isOpen && entityType === "deals") {
-      fetch(`${API_BASE_URL}/api/leads`, {
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      // Leads
+      const leadsRes = await fetch(`${API_BASE_URL}/api/leads`, {
         credentials: "include",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const list = Array.isArray(data) ? data : [];
-          // 🔥 FILTER IN JS TO BYPASS DB-SPECIFIC ENUM/CAST ISSUES
-          const qualified = list.filter(l => 
-            l.lead_status?.toString().trim().toLowerCase() === "qualified"
-          );
-          console.log(`[DEBUG FRONTEND] Total: ${list.length}, Qualified: ${qualified.length}`);
-          setLeadOptions(qualified);
-        })
-        .catch(() => setLeadOptions([]));
-    }
+      });
 
-    if (isOpen && entityType === "tickets") {
-      fetch(`${API_BASE_URL}/api/deals`, {
+      const leadsData = await leadsRes.json();
+
+      const leadsList = Array.isArray(leadsData)
+        ? leadsData
+        : leadsData.data || leadsData.leads || [];
+
+      setAllLeadsRaw(leadsList);
+
+      setAllLeads(
+        leadsList.map((lead) => ({
+          label: `${lead.first_name} ${lead.last_name}`,
+          value: lead.id,
+        }))
+      );
+
+      // Companies
+      const companiesRes = await fetch(`${API_BASE_URL}/api/companies`, {
         credentials: "include",
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          const list = Array.isArray(data) ? data : [];
-          const formatted = list.map((d) => ({
-            label: d.deal_name,
-            value: d.id,
-            company_id: d.company_id, // ✅ PASS METADATA
-          }));
-          setDealOptions(formatted);
-        })
-        .catch(() => setDealOptions([]));
+      });
+
+      const companiesData = await companiesRes.json();
+
+      console.log("Companies Response:", companiesData);
+
+      const companiesList = Array.isArray(companiesData)
+        ? companiesData
+        : companiesData.data ||
+          companiesData.companies ||
+          companiesData.rows ||
+          [];
+
+      setCompanyOptions([
+        {
+          label: "No Company",
+          value: "",
+        },
+        ...companiesList.map((company) => ({
+          label: company.company_name,
+          value: company.id,
+        })),
+      ]);
+
+      // Deals
+      const dealsRes = await fetch(`${API_BASE_URL}/api/deals`, {
+        credentials: "include",
+      });
+
+      const dealsData = await dealsRes.json();
+
+      const dealsList = Array.isArray(dealsData)
+        ? dealsData
+        : dealsData.data || dealsData.deals || [];
+
+      setDealOptions(
+        dealsList.map((deal) => ({
+          label: deal.deal_name,
+          value: deal.id,
+          company_id: deal.company_id,
+        }))
+      );
+    } catch (err) {
+      console.error("Drawer Fetch Error:", err);
+
+      setAllLeads([]);
+      setAllLeadsRaw([]);
+      setCompanyOptions([]);
+      setDealOptions([]);
     }
-  }, [entityType, isOpen]);
+  };
+
+  fetchData();
+}, [entityType, isOpen]);
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/api/leads`, {

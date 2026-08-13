@@ -37,7 +37,7 @@ export default function SettingsPage() {
 
   // FETCH PROFILE ON MOUNT
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/users/profile`, {
+    fetch(`${API_BASE_URL}/users/profile`, {
       credentials: "include",
     })
       .then(res => res.json())
@@ -77,7 +77,7 @@ export default function SettingsPage() {
       delete payload.confirm_password;
       if (!payload.password) delete payload.password;
 
-      const res = await fetch(`${API_BASE_URL}/api/users/profile`, {
+      const res = await fetch(`${API_BASE_URL}/users/profile`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -100,7 +100,7 @@ export default function SettingsPage() {
 
     setIsDeleting(true);
     try {
-      const res = await fetch(`${API_BASE_URL}/api/users/profile`, {
+      const res = await fetch(`${API_BASE_URL}/users/profile`, {
         method: "DELETE",
         credentials: "include",
       });

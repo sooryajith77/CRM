@@ -70,7 +70,7 @@ export default function Header({ toggleSidebar }) {
 
   // 🔥 Fetch logged user
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/users/profile`, {
+    fetch(`${API_BASE_URL}/users/profile`, {
       credentials: "include",
     })
       .then(res => res.json())
