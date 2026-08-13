@@ -77,14 +77,14 @@ async function loginUser(req, res) {
 });
 
     // 🔥 NOTIFICATION
-    await notifRepo.createNotification({
-      user_id: user.id,
-      type: "info",
-      message: `Login successful. Welcome back, ${user.first_name}!`,
-      metadata: { 
-        actor_name: `${user.first_name || ""} ${user.last_name || ""}`.trim()
-      }
-    });
+    // await notifRepo.createNotification({
+    //   user_id: user.id,
+    //   type: "info",
+    //   message: `Login successful. Welcome back, ${user.first_name}!`,
+    //   metadata: { 
+    //     actor_name: `${user.first_name || ""} ${user.last_name || ""}`.trim()
+    //   }
+    // });
 
     res.json({
       message: "Login success",
@@ -102,10 +102,12 @@ async function loginUser(req, res) {
     });
 
   } catch (err) {
-    console.error("LOGIN ERROR ❌", err);
-    res.status(500).json({ error: "Login failed" });
-  }
-}
+  console.error("LOGIN ERROR ❌", err);
+  res.status(500).json({
+    error: "Login failed",
+    details: err.message
+  });
+}}
 
 // PROFILE
 async function getProfile(req, res) {
