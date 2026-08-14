@@ -4,7 +4,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-const aiRoutes = require('./routes/aiRoutes');
+
 const app = express();
 const cookieParser = require("cookie-parser");
 const { sequelize } = require("./models");
@@ -59,7 +59,6 @@ app.use("/uploads", express.static(uploadPath));
 // ROUTES
 // ==========================
 
-app.use('/api/ai', aiRoutes);
 // Core Routes
 app.use("/api/leads", require("./routes/leadsRoutes"));
 app.use("/api/deals", require("./routes/dealsRoutes"));
